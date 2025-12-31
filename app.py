@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from datetime import datetime
+import pytz # <--- เพิ่ม Library จัดการ Timezone
 
 # --- 1. SETTINGS & STYLE ---
 st.set_page_config(page_title="My Loan Portfolio", page_icon="🌊", layout="wide")
@@ -327,8 +328,14 @@ else:
             with zone2_col:
                 st.subheader("📅 ติดตามยอดชำระ (Loan Tracker)")
                 if len(df) > 2:
-                    # Date Picker (Highlight เด่นรองลงมา)
-                    selected_date = st.date_input("เลือกวันที่:", datetime.now())
+                    # Date Picker (Highlight เด่นรองลงมา) - แก้ไข Timezone ตรงนี้
+                    # 1. ตั้งค่า Timezone เป็น Bangkok
+                    th_tz = pytz.timezone('Asia/Bangkok')
+                    # 2. ดึงเวลาปัจจุบันในโซนไทย
+                    current_date_th = datetime.now(th_tz)
+                    
+                    selected_date = st.date_input("เลือกวันที่:", current_date_th)
+                    
                     loan_data = df.iloc[2:].copy()
                     try:
                         tracker_df = pd.DataFrame()
