@@ -178,7 +178,14 @@ if st.sidebar.button('🔄 รีเฟรชข้อมูล'):
 if app_mode == "📊 ภาพรวมทุกเดือน (Summary)":
     st.title("📊 ภาพรวมทุกเดือน (Summary)")
     st.markdown("---")
+# ... (ส่วน import) ...
+st.title(f"📊 Dashboard: {selected_month}")
 
+# --- 🛠️ ส่วน DEBUG (ลบออกเมื่อหายแล้ว) ---
+th_tz = pytz.timezone('Asia/Bangkok')
+now_th = datetime.now(th_tz)
+st.warning(f"🕒 เวลา Server (ไทย): {now_th.strftime('%d/%m/%Y %H:%M:%S')}")
+# -------------------------------------
     all_months_data = []
     for month_name, url in MONTH_LINKS.items():
         if url and "http" in url:
@@ -453,3 +460,4 @@ else:
             st.error(f"เกิดข้อผิดพลาด: {e}")
     else:
         st.info("กำลังโหลดข้อมูล...")
+
