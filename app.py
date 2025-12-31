@@ -262,13 +262,13 @@ else:
 
     with col_title:
         # ... (ส่วน import) ...
-st.title(f"📊 Dashboard: {selected_month}")
+        st.title(f"📊 Dashboard: {selected_month}")
 
-# --- 🛠️ ส่วน DEBUG (ลบออกเมื่อหายแล้ว) ---
-th_tz = pytz.timezone('Asia/Bangkok')
-now_th = datetime.now(th_tz)
-st.warning(f"🕒 เวลา Server (ไทย): {now_th.strftime('%d/%m/%Y %H:%M:%S')}")
-# -------------------------------------
+        # --- 🛠️ ส่วน DEBUG (ลบออกเมื่อหายแล้ว) ---
+        th_tz = pytz.timezone('Asia/Bangkok')
+        now_th = datetime.now(th_tz)
+        st.warning(f"🕒 เวลา Server (ไทย): {now_th.strftime('%d/%m/%Y %H:%M:%S')}")
+        # -------------------------------------
 
     st.markdown("---")
 
@@ -460,5 +460,6 @@ st.warning(f"🕒 เวลา Server (ไทย): {now_th.strftime('%d/%m/%Y %H
             st.error(f"เกิดข้อผิดพลาด: {e}")
     else:
         st.info("กำลังโหลดข้อมูล...")
+
 
 
