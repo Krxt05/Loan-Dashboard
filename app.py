@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 # --- 1. SETTINGS & STYLE ---
-st.set_page_config(page_title="My Trading Portfolio", page_icon="🌊", layout="wide")
+st.set_page_config(page_title="My Loan Portfolio", page_icon="🌊", layout="wide")
 
 # ชุดสี Pastel Theme
 THEME = {
@@ -81,7 +81,7 @@ def fmt(val): return f"{parse(val):,.2f}"
 
 
 # --- 3. SIDEBAR ---
-st.sidebar.title("🌊 Blue Vibe")
+st.sidebar.title("Loan Status")
 app_mode = st.sidebar.radio("เลือกโหมดการดูข้อมูล",
                             ["📅 ดูรายเดือน", "📊 ภาพรวมทุกเดือน (Summary)"],
                             index=0)
@@ -289,4 +289,5 @@ else:
         except Exception as e:
             st.error(f"เกิดข้อผิดพลาด: {e}")
     else:
+
         st.info("กำลังโหลดข้อมูล...")
